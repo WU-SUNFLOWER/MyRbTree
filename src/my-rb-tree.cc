@@ -133,9 +133,7 @@ bool IsLegalRbTree(RbRoot* root_node) {
     return true;
 }
 
-bool RbTreeTesterAuto(bool print_log) {
-    int node_num = 10000;
-
+bool RbTreeTesterAuto(int node_num, bool print_log) {
     std::random_device rd;  // Random seed generator
     std::mt19937 gen(rd());  // Random number generator
     std::uniform_int_distribution<int> dis(-node_num * 2, node_num * 2);  // The range of random number is [-1000, 1000]

@@ -20,7 +20,7 @@ void MyPrintRbTree(RbNode* node);
 /* Test tools for rb-tree */
 bool IsLegalRbTree(RbRoot* root);
 
-bool RbTreeTesterAuto(bool print_log = false);
+bool RbTreeTesterAuto(int node_num = 10000, bool print_log = false);
 
 bool RbTreeTesterWithValues(const std::vector<int>&, bool print_log = false);
 

@@ -19,14 +19,15 @@ typedef struct RbRoot {
 
 #define InitializedRbRoot { NULL, }
 
-#define OffsetOf(type, member) (uintptr_t)(&((type*)0)->member)
+#define OffsetOf(type, member) ((uintptr_t)(&((type*)0)->member))
 
-#define ContainerOf(ptr, type, member) (type*)((uintptr_t)(ptr) - OffsetOf(type, member));
+#define ContainerOf(ptr, type, member) ((type*)((uintptr_t)(ptr) - OffsetOf(type, member)))
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+    /* Small utils */
     inline void SetColor(RbNode* node, Color color) {
         node->color = color;
     }
@@ -43,18 +44,21 @@ extern "C" {
         return root->rb_node == NULL;
     }
 
-    inline void Transplant(RbNode* old_node, RbNode* new_node, RbRoot* root);
+    inline void Transplant(RbNode* old_node, RbNode* new_node, RbRoot* root);  // Same with CLRS
 
+    /* Rotation function. */
     inline void RotateLeft(RbNode* x, RbRoot* root);
 
     inline void RotateRight(RbNode* x, RbRoot* root);
 
-    // Insert implementation
+    /* Insert implementation */
     void FixupAfterInsert(RbNode* node, RbRoot* root);
+
     void InsertIntoRbTree(RbNode* node, RbNode* parent, RbNode** parent_link, RbRoot* root);
 
-    // Remove implementation
+    /* Remove implementation */
     void FixupAfterRemove(RbNode* node, RbNode* node_parent, RbRoot* root);
+
     void RemoveFromRbTree(RbNode* node, RbRoot* root);
 
 #ifdef __cplusplus
